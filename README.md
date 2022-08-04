@@ -1,3 +1,7 @@
+# Annotation
+
+This is a modified version of the template. The original template can be found here: https://github.com/half-duplex/hugo-arcana
+
 # Hugo HTML5 UP Arcana
 
 This is a [Hugo](https://gohugo.io/) port of the
