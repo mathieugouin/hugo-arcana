@@ -2,7 +2,9 @@
 <html lang="{{ .Language }}">
     <head>
         {{- partial "head/head.html" . -}}
+        {{- if .Site.Params.opengraph | default true }}
         {{- template "_internal/opengraph.html" . -}}
+        {{- end }}
         {{ "" | safeHTML }}
     </head>
     <body class="is-preload">
