@@ -3,6 +3,7 @@
     <head>
         {{- partial "head/head.html" . -}}
         {{- template "_internal/opengraph.html" . -}}
+        {{ "        <!-- Alignment -->" | safeHTML }}
     </head>
     <body class="is-preload">
         {{- partial "analytics/google-tag-manager/body.html" . }}
@@ -21,7 +22,9 @@
             {{ end }}
 
             {{- partial "footer/footer.html" . -}}
+            {{ "            <!-- Alignment -->" | safeHTML }}
         </div>
         {{- partial "scripts.html" . -}}
+        {{ "        <!-- Alignment -->" | safeHTML }}
     </body>
 </html>
