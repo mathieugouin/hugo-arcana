@@ -25,13 +25,17 @@
         </div>
     </div>
 
-    <ul class="icons">
-    {{- range .Site.Params.social }}
-        <li><a href="{{ .url }}" class="{{ if .icon }}icon brands {{ .icon  }}{{ end }}">
-            <span class="label">{{ .title }}</span>
-        </a>
+    {{- if .Site.Params.social }}
+        <ul class="icons">
+        {{- range .Site.Params.social }}
+            <li>
+                <a href="{{ .url }}" class="{{ if .icon }}icon brands {{ .icon  }}{{ end }}">
+                    <span class="label">{{ .title }}</span>
+                </a>
+            </li>
+        {{- end }}
+        </ul>
     {{- end }}
-    </ul>
 
     <div class="copyright">
         <ul class="menu">

@@ -1,7 +1,13 @@
-<ul class="tags">
+
+{{- if .GetTerms "tags" }}
+    <ul class="tags">
     {{- with .GetTerms "tags" }}
         {{- range . -}}
-            <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{ "" | safeHTML }}
+        <li>
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </li>
         {{- end }}
     {{- end }}
-</ul>
+    </ul>
+{{- end }}
