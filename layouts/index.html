@@ -2,8 +2,9 @@
 <html lang="{{ .Language }}">
     <head>
         {{- partial "head/head.html" . -}}
+        {{- if .Site.Params.opengraph | default true }}
         {{- template "_internal/opengraph.html" . -}}
-        {{ "        <!-- Alignment -->" | safeHTML }}
+        {{- end }}
     </head>
     <body class="is-preload">
         {{- partial "analytics/google-tag-manager/body.html" . }}
@@ -22,9 +23,9 @@
             {{ end }}
 
             {{- partial "footer/footer.html" . -}}
-            {{ "            <!-- Alignment -->" | safeHTML }}
+            {{ "" | safeHTML }}
         </div>
         {{- partial "scripts.html" . -}}
-        {{ "        <!-- Alignment -->" | safeHTML }}
+        {{ "" | safeHTML }}
     </body>
 </html>
