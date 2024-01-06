@@ -1,25 +1,25 @@
 
             <div id="header">
-                <!-- Need to keep one one line otherwise, blank lines are inserted and 
+                <!-- Need to keep one one line otherwise, blank lines are inserted and
                     this adds spaces before or after the <a> tag. -->
                 <h1>
                     <a href="{{ .Site.BaseURL }}" id="logo">
                         {{- with .Site.Data.globalheader.image -}}
                             {{- if isset . "src" -}}
                                 <img src="{{ .src | relURL }}"
-                                    {{- with .width }}
-                                        width="{{- . -}}"
+                                    {{- with .width -}}
+                                        {{ print " " | safeHTMLAttr }}width="{{- . -}}"
                                     {{- end -}}
-                                    {{- with .height }}
-                                        height="{{- . -}}"
+                                    {{- with .height -}}
+                                        {{ print " " | safeHTMLAttr }}height="{{- . -}}"
                                     {{- end -}}
-                                    {{- with .alt }}
-                                        alt="{{- . -}}"
+                                    {{- with .alt -}}
+                                        {{ print " " | safeHTMLAttr }}alt="{{- . -}}"
                                     {{- end -}}
                                 >
                             {{- end -}}
                         {{- end -}}
-                        
+
                         <!-- Using "isset" instead of "with" to allow for empty string for the custom title. -->
                         {{- if isset .Site.Data.globalheader "title" -}}
                             {{- .Site.Data.globalheader.title | markdownify -}}
