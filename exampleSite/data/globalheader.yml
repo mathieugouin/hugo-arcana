@@ -1,1 +1,7 @@
 title: "Arcana _by HTML5 UP_"
+
+image:
+  src: 'images/pic03.jpg'
+  alt: 'Test Image'
+  width: 50
+  height: 50
