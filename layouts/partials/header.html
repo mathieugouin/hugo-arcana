@@ -1,23 +1,33 @@
 
             <div id="header">
-                <h1><a href="{{ .Site.BaseURL }}" id="logo">
-                    {{- if .Site.Data.globalheader.image }}
-                        <img src="{{ .Site.Data.globalheader.image | relURL }}"
-                            {{- if .Site.Data.globalheader.image_alt }}
-                                alt="{{ .Site.Data.globalheader.image_alt }}"
-                            {{- end }}
-                            {{- if .Site.Data.globalheader.image_width }}
-                                width="{{ .Site.Data.globalheader.image_width }}"
-                            {{- end }}
-                            {{- if .Site.Data.globalheader.image_height }}
-                                height="{{ .Site.Data.globalheader.image_height }}"
-                            {{- end }}
-                        />
-                    {{- end }}
-                    {{ with .Site.Data.globalheader.title }}
-                        {{ . | markdownify }}{{ else }}{{ .Site.Title }}
-                    {{ end }}
-                </a></h1>
+                <!-- Need to keep one one line otherwise, blank lines are inserted and 
+                    this adds spaces before or after the <a> tag. -->
+                <h1>
+                    <a href="{{ .Site.BaseURL }}" id="logo">
+                        {{- with .Site.Data.globalheader.image -}}
+                            {{- if isset . "src" -}}
+                                <img src="{{ .src | relURL }}"
+                                    {{- with .width }}
+                                        width="{{- . -}}"
+                                    {{- end -}}
+                                    {{- with .height }}
+                                        height="{{- . -}}"
+                                    {{- end -}}
+                                    {{- with .alt }}
+                                        alt="{{- . -}}"
+                                    {{- end -}}
+                                >
+                            {{- end -}}
+                        {{- end -}}
+                        
+                        <!-- Using "isset" instead of "with" to allow for empty string for the custom title. -->
+                        {{- if isset .Site.Data.globalheader "title" -}}
+                            {{- .Site.Data.globalheader.title | markdownify -}}
+                        {{- else -}}
+                            {{- .Site.Title -}}
+                        {{- end -}}
+                    </a>
+                </h1>
 
                 <nav id="nav">
                     <ul>
