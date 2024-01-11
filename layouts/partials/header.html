@@ -2,13 +2,30 @@
     {{ if .Site.IsMultiLingual }}
         {{- partial "languages.html" . }}
     {{- end -}}
-    <h1><a href="{{ .Site.BaseURL }}" id="logo">
-        {{- if .Site.Data.globalheader.image }}
-            <img src="{{ .Site.Data.globalheader.image | relURL }}" alt="{{ .Site.Data.globalheader.image_alt }}" />
-        {{- end }}
-        {{ with .Site.Data.globalheader.title }}{{ . | markdownify }}{{ else }}{{ .Site.Title }}{{ end }}
-    </a></h1>
 
+    <!-- Need to keep one one line otherwise, blank lines are inserted and
+        this adds spaces before or after the <a> tag. -->
+    <h1><a href="{{ .Site.BaseURL }}" id="logo">
+        {{- with .Site.Data.globalheader.image -}}
+            {{- if isset . "src" -}}
+                <img src="{{ .src | relURL }}"
+                    {{- with .width -}}
+                        {{ print " " | safeHTMLAttr }}width="{{- . -}}"
+                    {{- end -}}
+                    {{- with .height -}}
+                        {{ print " " | safeHTMLAttr }}height="{{- . -}}"
+                    {{- end -}}
+                    {{- with .alt -}}
+                        {{ print " " | safeHTMLAttr }}alt="{{- . -}}"
+                    {{- end -}}
+                >
+            {{- end -}}
+        {{- end -}}
+
+        <!-- Using "isset" instead of "with" to allow for empty string for the custom title. -->
+        {{- if isset .Site.Data.globalheader "title" -}}{{- .Site.Data.globalheader.title | markdownify -}}{{- else -}}{{- .Site.Title -}}{{- end -}}
+    </a></h1>
+        
     <nav id="nav">
         <ul>
             {{- range .Site.Menus.main }}
