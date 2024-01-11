@@ -2,7 +2,9 @@
 <html lang="{{ .Language }}">
     <head>
         {{- partial "head/head.html" . -}}
-        {{- template "_internal/opengraph.html" . -}}
+        {{- if .Site.Params.opengraph | default true -}}
+            {{- template "_internal/opengraph.html" . -}}
+        {{- end -}}
     </head>
     <body class="is-preload">
         {{- partial "analytics/google-tag-manager/body.html" . }}
