@@ -42,12 +42,15 @@
                                 <li class="{{ if or ($.Page.IsMenuCurrent "main" .) ($.Page.HasMenuCurrent "main" .) }}current{{ end }}">
                                     {{/* aoeu fix 'current' thing */}}
                                     <a href="{{ .URL | default "#" }}">{{ .Name }}</a>
+                                </li>
                                 {{- end }}
                             </ul>
                             {{- end -}}
+                        </li>
                         {{- end }}
                     </ul>
                     {{- end -}}
+                </li>
             {{- end }}
         </ul>
     </nav>
