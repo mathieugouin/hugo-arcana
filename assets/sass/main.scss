@@ -1390,6 +1390,12 @@
                         font-style: normal;
                         font-weight: 300;
                     }
+
+                    a {
+                        font-weight: inherit;
+                        color: inherit;
+                        border-bottom: none;
+                    }
                 }
 
                 .toggle {
